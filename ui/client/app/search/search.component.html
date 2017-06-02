@@ -1,0 +1,43 @@
+<form [formGroup]="searchForm" (submit)="search($event)">
+  <label for="basic-url">Search your address </label>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon3">
+        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+    </span>
+    <input formControlName="apiKey" name="apiKey" [(ngModel)]="apiKey" type="text" class="form-control" placeholder="Api Key" aria-describedby="basic-addon1">
+    <span *ngIf="searchForm.controls.apiKey.invalid" class="form-control alert-danger">Api Key is required!</span>
+ 
+    <span class="input-group-addon" id="basic-addon3">
+        <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+    </span>
+    <input formControlName="countryCode" name="countryCode" [(ngModel)]="countryCode" type="text" class="form-control" placeholder="Country Code" aria-describedby="basic-addon1">
+    <span *ngIf="searchForm.controls.countryCode.invalid" class="form-control alert-danger">Country Code is required!</span>
+  </div>
+
+ <div class="input-group">
+    <span class="input-group-addon" id="basic-addon3">
+        <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>
+    </span>
+    <input formControlName="addressCode" name="addressCode" [(ngModel)]="addressCode" type="text" class="form-control" placeholder="Addreess Code" aria-describedby="basic-addon1">
+    <span *ngIf="searchForm.controls.addressCode.invalid" class="form-control alert-danger">Address Code is required!</span>
+  </div>
+
+  
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" formControlName="format" name="format" [(ngModel)]="format" aria-label="...">
+      <label for="basic-url">XML (Default: Json) </label>
+    </span>
+    <span class="input-group-addon" id="basic-addon3">
+      <button type="submit" class="btn btn-primary" [disabled]="searchForm.invalid">Search Address</button>
+      <button type="button" class="btn btn-danger" (click)="clearForm($event)">Clear</button>
+    </span>
+  </div>
+
+<div class="input-group">
+  <label for="basic-url" >{{fragment}}</label>
+</div>
+        
+</form>
+

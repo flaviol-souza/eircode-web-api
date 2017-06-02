@@ -1,0 +1,19 @@
+FROM java:8
+MAINTAINER Flavio Souza <flavioluiz.ssouza@gmail.com>
+RUN apt-get update && apt-get install
+
+RUN mkdir -p /usr/src/app
+VOLUME /usr/src/app/tmp
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+ADD web-api-eircode/target/fexco-eircode-0.0.1.jar /usr/src/app/app.jar
+
+EXPOSE 8080
+
+RUN sh -c 'touch /usr/src/app/app.jar'
+
+ENTRYPOINT ["java", "-jar", "/usr/src/app/app.jar"]
+
+

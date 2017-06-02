@@ -1,0 +1,26 @@
+db:
+  build: .   
+  dockerfile: Dockerfile-redis
+  hostname: redis
+  ports:
+    - 6379:6379
+  #volumes:
+  #  - docker/redis-data:/data
+
+api:
+  build: .
+  dockerfile: Dockerfile-api
+  hostname: api
+  ports:
+    - 8080:8080
+  links:
+      - "db:redis"
+web:
+  build: .
+  dockerfile: Dockerfile-front
+  ports:
+    - 3000:3000
+  links:
+      - "api:api"
+
+  

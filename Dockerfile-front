@@ -1,0 +1,16 @@
+FROM node:6
+MAINTAINER Flavio Souza <flavioluiz.ssouza@gmail.com>
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app/client
+WORKDIR /usr/src/app/server
+
+COPY ui/client /usr/src/app/client
+COPY ui/server /usr/src/app/server
+
+RUN cd /usr/src/app/server
+RUN npm install
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
